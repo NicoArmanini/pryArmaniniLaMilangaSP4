@@ -22,14 +22,20 @@ namespace pryArmaniniLaMilangaSP4
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //pongo nombre de mozos y las filas correspondientes
+            int i = 0;
 
-            dgvTabla.Rows.Add("Julio");
-            dgvTabla.Rows.Add("Esteban");
-            dgvTabla.Rows.Add("Javier");
-            dgvTabla.Rows.Add("Gonzalo");
-            dgvTabla.Rows.Add("Alberto");
-
+            for (i = 0; i <= 4; i++)
+            {
+                dgvTabla.Rows.Add();
+            }
+            //Asigno nombres a la primer columna
+            dgvTabla.Rows[0].Cells[0].Value = "Julio";
+            dgvTabla.Rows[1].Cells[0].Value = "Esteban";
+            dgvTabla.Rows[2].Cells[0].Value = "Javier";
+            dgvTabla.Rows[3].Cells[0].Value = "Gonzalo";
+            dgvTabla.Rows[4].Cells[0].Value = "Alberto";
+            //Todas las celdas de la columna cero "Mozo" son ineditables
+            dgvTabla.Columns[0].ReadOnly = true;
         }
 
         private void btnValidar_Click(object sender, EventArgs e)
@@ -84,5 +90,102 @@ namespace pryArmaniniLaMilangaSP4
             }
         }
 
+        private void btnMozoDelDia_Click(object sender, EventArgs e)
+        {
+           
+            int c = 0;
+            int f = 0;
+            int Suma = 0;
+            int Mayor = 0;
+            int Posicion = 0;
+            while (f < matDatos.GetLength(0))
+            {
+                while (c < matDatos.GetLength(1))
+                {
+                    Suma = Suma + matDatos[f, c];
+                    c++;
+                }
+                vecDatos[f] = Suma;
+                c = 0;
+                f++;
+                Suma = 0;
+            }
+
+            f = 0;
+            Mayor = vecDatos[0];
+            while (f <= 4)
+            {
+                if (vecDatos[f] >= Mayor)
+                {
+                    Mayor = vecDatos[f];
+                    Posicion = f;
+                }
+                f++;
+            }
+
+            if (Posicion == 0)
+            {
+                txtMozo.Text = "Julio";
+                txtTotal.Text = Mayor.ToString();
+            }
+            if (Posicion == 1)
+            {
+                txtMozo.Text = "Esteban";
+                txtTotal.Text = Mayor.ToString();
+            }
+            if (Posicion == 2)
+            {
+                txtMozo.Text = "Javier";
+                txtTotal.Text = Mayor.ToString();
+            }
+            if (Posicion == 3)
+            {
+                txtMozo.Text = "Gonzalo";
+                txtTotal.Text = Mayor.ToString();
+            }
+            if (Posicion == 4)
+            {
+                txtMozo.Text = "Alberto";
+                txtTotal.Text = Mayor.ToString();
+            }
+
+        }
+
+        private void btnTotal_Click(object sender, EventArgs e)
+        {
+            int f = 0;
+            int c = 0;
+            int i = 5;
+            int Suma = 0;
+            int Total = 0;
+
+            while (c < matDatos.GetLength(1) && i <= 9)
+            {
+                Suma = 0;
+                while (f < matDatos.GetLength(0))
+                {
+                    Suma = Suma + matDatos[f, c];
+                    f++;
+                }
+                vecDatos[i] = Suma;
+                Total = Total + Suma;
+                f = 0;
+                c++;
+                i++;
+            }
+
+            vecDatos[9] = Total;
+
+            txtComidas.Text = Convert.ToString(vecDatos[5]);
+            txtBebidasSA.Text = Convert.ToString(vecDatos[6]);
+            txtBebidasCA.Text = Convert.ToString(vecDatos[7]);
+            txtPostres.Text = Convert.ToString(vecDatos[8]);
+            txtTotalFinal.Text = Convert.ToString(vecDatos[9]);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

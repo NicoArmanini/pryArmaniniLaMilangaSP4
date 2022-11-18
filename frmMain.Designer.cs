@@ -46,13 +46,13 @@
             this.lblBebidaCA = new System.Windows.Forms.Label();
             this.lblPostres = new System.Windows.Forms.Label();
             this.lblTotalFinal = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtMozo = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtComidas = new System.Windows.Forms.TextBox();
+            this.txtBebidasSA = new System.Windows.Forms.TextBox();
+            this.txtBebidasCA = new System.Windows.Forms.TextBox();
+            this.txtPostres = new System.Windows.Forms.TextBox();
+            this.txtTotalFinal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.dgvTabla.Name = "dgvTabla";
             this.dgvTabla.RowHeadersWidth = 51;
             this.dgvTabla.RowTemplate.Height = 24;
-            this.dgvTabla.Size = new System.Drawing.Size(701, 274);
+            this.dgvTabla.Size = new System.Drawing.Size(689, 274);
             this.dgvTabla.TabIndex = 0;
             // 
             // Column1
@@ -78,43 +78,49 @@
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 90;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Comidas";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 90;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Bebidas sin Alcohol";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 90;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Bebidas con Alcohol";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Width = 90;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Postres";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 125;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 90;
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(762, 76);
+            this.btnValidar.Location = new System.Drawing.Point(772, 25);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(145, 45);
             this.btnValidar.TabIndex = 1;
@@ -124,30 +130,35 @@
             // 
             // btnMozoDelDia
             // 
+            this.btnMozoDelDia.Enabled = false;
             this.btnMozoDelDia.Location = new System.Drawing.Point(32, 337);
             this.btnMozoDelDia.Name = "btnMozoDelDia";
             this.btnMozoDelDia.Size = new System.Drawing.Size(116, 38);
             this.btnMozoDelDia.TabIndex = 2;
             this.btnMozoDelDia.Text = "Mozo del Dia";
             this.btnMozoDelDia.UseVisualStyleBackColor = true;
+            this.btnMozoDelDia.Click += new System.EventHandler(this.btnMozoDelDia_Click);
             // 
             // btnTotal
             // 
+            this.btnTotal.Enabled = false;
             this.btnTotal.Location = new System.Drawing.Point(32, 421);
             this.btnTotal.Name = "btnTotal";
             this.btnTotal.Size = new System.Drawing.Size(116, 39);
             this.btnTotal.TabIndex = 3;
             this.btnTotal.Text = "Total";
             this.btnTotal.UseVisualStyleBackColor = true;
+            this.btnTotal.Click += new System.EventHandler(this.btnTotal_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(820, 479);
+            this.btnSalir.Location = new System.Drawing.Point(799, 479);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(118, 31);
             this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // lblMozo
             // 
@@ -212,67 +223,75 @@
             this.lblTotalFinal.TabIndex = 11;
             this.lblTotalFinal.Text = "Total Final";
             // 
-            // textBox1
+            // txtMozo
             // 
-            this.textBox1.Location = new System.Drawing.Point(171, 349);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
-            this.textBox1.TabIndex = 12;
+            this.txtMozo.Location = new System.Drawing.Point(171, 349);
+            this.txtMozo.Name = "txtMozo";
+            this.txtMozo.ReadOnly = true;
+            this.txtMozo.Size = new System.Drawing.Size(132, 22);
+            this.txtMozo.TabIndex = 12;
             // 
-            // textBox2
+            // txtTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(335, 349);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 22);
-            this.textBox2.TabIndex = 13;
+            this.txtTotal.Location = new System.Drawing.Point(335, 349);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(117, 22);
+            this.txtTotal.TabIndex = 13;
             // 
-            // textBox3
+            // txtComidas
             // 
-            this.textBox3.Location = new System.Drawing.Point(171, 438);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(97, 22);
-            this.textBox3.TabIndex = 14;
+            this.txtComidas.Location = new System.Drawing.Point(171, 438);
+            this.txtComidas.Name = "txtComidas";
+            this.txtComidas.ReadOnly = true;
+            this.txtComidas.Size = new System.Drawing.Size(97, 22);
+            this.txtComidas.TabIndex = 14;
             // 
-            // textBox4
+            // txtBebidasSA
             // 
-            this.textBox4.Location = new System.Drawing.Point(284, 439);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(123, 22);
-            this.textBox4.TabIndex = 15;
+            this.txtBebidasSA.Location = new System.Drawing.Point(284, 439);
+            this.txtBebidasSA.Name = "txtBebidasSA";
+            this.txtBebidasSA.ReadOnly = true;
+            this.txtBebidasSA.Size = new System.Drawing.Size(123, 22);
+            this.txtBebidasSA.TabIndex = 15;
             // 
-            // textBox5
+            // txtBebidasCA
             // 
-            this.textBox5.Location = new System.Drawing.Point(427, 439);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(140, 22);
-            this.textBox5.TabIndex = 16;
+            this.txtBebidasCA.Location = new System.Drawing.Point(427, 439);
+            this.txtBebidasCA.Name = "txtBebidasCA";
+            this.txtBebidasCA.ReadOnly = true;
+            this.txtBebidasCA.Size = new System.Drawing.Size(140, 22);
+            this.txtBebidasCA.TabIndex = 16;
             // 
-            // textBox6
+            // txtPostres
             // 
-            this.textBox6.Location = new System.Drawing.Point(583, 438);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(88, 22);
-            this.textBox6.TabIndex = 17;
+            this.txtPostres.Location = new System.Drawing.Point(583, 438);
+            this.txtPostres.Name = "txtPostres";
+            this.txtPostres.ReadOnly = true;
+            this.txtPostres.Size = new System.Drawing.Size(88, 22);
+            this.txtPostres.TabIndex = 17;
             // 
-            // textBox7
+            // txtTotalFinal
             // 
-            this.textBox7.Location = new System.Drawing.Point(686, 439);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(97, 22);
-            this.textBox7.TabIndex = 18;
+            this.txtTotalFinal.Location = new System.Drawing.Point(686, 439);
+            this.txtTotalFinal.Name = "txtTotalFinal";
+            this.txtTotalFinal.ReadOnly = true;
+            this.txtTotalFinal.Size = new System.Drawing.Size(97, 22);
+            this.txtTotalFinal.TabIndex = 18;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 522);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(928, 522);
+            this.Controls.Add(this.txtTotalFinal);
+            this.Controls.Add(this.txtPostres);
+            this.Controls.Add(this.txtBebidasCA);
+            this.Controls.Add(this.txtBebidasSA);
+            this.Controls.Add(this.txtComidas);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtMozo);
             this.Controls.Add(this.lblTotalFinal);
             this.Controls.Add(this.lblPostres);
             this.Controls.Add(this.lblBebidaCA);
@@ -298,11 +317,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTabla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Button btnValidar;
         private System.Windows.Forms.Button btnMozoDelDia;
         private System.Windows.Forms.Button btnTotal;
@@ -314,13 +328,18 @@
         private System.Windows.Forms.Label lblBebidaCA;
         private System.Windows.Forms.Label lblPostres;
         private System.Windows.Forms.Label lblTotalFinal;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtMozo;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtComidas;
+        private System.Windows.Forms.TextBox txtBebidasSA;
+        private System.Windows.Forms.TextBox txtBebidasCA;
+        private System.Windows.Forms.TextBox txtPostres;
+        private System.Windows.Forms.TextBox txtTotalFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
 
